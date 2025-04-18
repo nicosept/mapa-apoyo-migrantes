@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapa Ser Humano</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <style>
+    body {
+      background-color: #73879e;
+    }
+
+    .mapContainer {
+      padding-top: 20vh;
+      width: 99vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      font-size: 2vw;
+      font-family: Arial, Helvetica, sans-serif;
+      padding-bottom: 4vh;
+      color: white;
+      font-weight: bold;
+    }
+    #map {
+      width: 50%;
+      height: 50vh;
+    }
+    .popup-content {
+      font-family: sans-serif;
+    }
+    .popup-content h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .popup-content p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="mapContainer">
+    <div class="title">Servicios Publicos de Salud para Migrantes</div>
+    <div id="map"></div>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIj]JZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const map = L.map('map').setView([32.508202, -116.967277], 13);
+
+    
+    L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    data = {
+  "locations": [
+    {
+      "name": "Torre Esquina. Rufino Tamayo 9990, Piso 6, Oficina 604. Zona Río",
+      "title": "ACNUR",
+      "description": "Asistencia humanitaria, orientación para refugiados y solicitantes de asilo en México.",
+      "latitude": 32.5195,
+      "longitude": -117.0219
+    },
+    {
+      "name": "Insurgentes 16000, Los Álamos",
+      "title": "INM",
+      "description": "Oficina para realizar trámites migratorios.",
+      "latitude": 32.5042,
+      "longitude": -117.0037
+    },
+    {
+      "name": "Av. Venustiano Carranza 6250, Colonia Castillo (Proyecto Salesiano)",
+      "title": "COMAR",
+      "description": "Atención general para procedimiento de la condición de refugiado en México.",
+      "latitude": 32.5018,
+      "longitude": -116.9874
+    },
+    {
+      "name": "Blvd. Independencia 1350, Zona Urbana Rio Tijuana, 22010 Tijuana, B.C.",
+      "title": "Dirección Municipal de Atención al Migrante del H. Ayuntamiento de Tijuana",
+      "description": "Constancias de identidad, credencial temporal para personas repatriadas. Orientación sobre servicios gratuitos para personas migrantes en Tijuana.",
+      "latitude": 32.5331,
+      "longitude": -117.0167
+    },
+    {
+      "name": "Av. Miguel Negrete 8350, Zona Río",
+      "title": "Refugee Health Alliance (RHA): Clínica de resistencia en salud",
+      "description": "Consulta médica general. Filtro de agua potable para beber gratis.",
+      "latitude": 32.5173,
+      "longitude": -117.0238
+    },
+    {
+      "name": "Avenida Madero 222-2, Centro",
+      "title": "PREVENCASA A.C.",
+      "description": "Consulta médica general y nutricional gratuita. Programa de reducción de daño, detección de VIH y otras ITS. Regaderas comunitarias y acceso a agua potable para beber Lun-Vie 9am-2pm. Atención psicológica Lun, Mier y Vie 9am-1pm.",
+      "latitude": 32.5319,
+      "longitude": -117.0385
+    },
+    {
+      "name": "Ing. Juan Ojeda Robles No. 14445 Col, Guadalupe Victoria, 22426 Tijuana, B.C.",
+      "title": "Centro Comunitario LGBTI",
+      "description": "Pruebas VIH gratuitas, canalización a atención médica, asistencia psicosocial, internet gratuito, para toda la población.",
+      "latitude": 32.4926,
+      "longitude": -116.9582
+    },
+    {
+      "name": "Fuentes de Mexicali SN Fraccionamiento, 22245",
+      "title": "PROSALUD",
+      "description": "Medicina general, ginecología, dentista, nutrición y asesoría psicológica. (SERVICIOS CON COSTO) Área de trabajo social para estudio socioeconómico.",
+      "latitude": 32.4789,
+      "longitude": -116.9721
+    },
+    {
+      "name": "CAPASITS",
+      "title": "CAPASITS",
+      "description": "Atención a pacientes con VIH e infecciones de transmisión sexual.",
+      "latitude": 32.4789,
+      "longitude": -116.9721
+  }]}
+
+    data.locations.forEach(loc => {
+      const popupContent = `
+        <div class="popup-content">
+          <h3>${loc.title}</h3>
+          <p>${loc.description}</p>
+          <p><strong>Address:</strong> ${loc.name}</p>
+        </div>
+      `;
+
+        L.marker([loc.latitude, loc.longitude])
+          .addTo(map)
+          .bindPopup(popupContent);
+      });
+    // L.marker([51.505, -0.09]).addTo(map)
+    //   .bindPopup('A marker in London.')
+    //   .openPopup();
+  </script>
+</body>
+</html>
