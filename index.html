@@ -12,7 +12,7 @@
     }
 
     .mapContainer {
-      padding-top: 20vh;
+      padding-top: 10vh;
       width: 99vw;
       display: flex;
       justify-content: center;
@@ -40,12 +40,24 @@
     .popup-content p {
       margin: 5px 0;
     }
+
+    .text {
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: justify;
+      width: 50vw;
+      font-size: 0.8vw;
+      padding-top: 4vh;
+    }
   </style>
 </head>
 <body>
   <div class="mapContainer">
     <div class="title">Servicios Publicos de Salud para Migrantes</div>
     <div id="map"></div>
+    <div class="text">  Este proyecto nace porque nuestro equipo reconoce la situación por la que viven los migrantes en Tijuana. Muchos migrantes vienen hasta Tijuana en busca de mejores oportunidades al querer cruzar a Estados Unidos, pero en el camino desgraciadamente muchos son asaltados, secuestrados, no pudieron cruzar o incluso están esperando este intento. A muchos no les dan trabajo, muchos son discriminados. Existen muchas situaciones desagradables por las que los migrantes pueden estar pasando las cuales no se toman en cuenta. <br><br>Este relato constante fue la motivación para poder usar nuestras habilidades de ciencias computacionales y usar las reflexiones que tenemos en la materia de ser humano y sociedad para poder actuar, nosotros decidimos hacer un mapa donde cualquier migrante en busca de ayuda pueda acceder y encontrar servicios básicos de salud.
+      En muchos casos, al llegar a una nueva ciudad o país, no se tiene conocimiento de a dónde acudir para recibir atención médica o apoyo. Nuestro objetivo fue hacer visible esta información de manera rápida y accesible, con este mapa buscamos reducir la falta de información que enfrentan muchas personas migrantes, dándoles una herramienta sencilla y fácil de usar que les indique dónde pueden acudir para recibir ayuda, todo con solo un dispositivo móvil o computadora e internet o datos celular.
+    </div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIj]JZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
@@ -115,7 +127,7 @@
       "longitude": -116.9721
     },
     {
-      "name": "CAPASITS",
+      "name": "Fuentes de Mexicali SN Fraccionamiento, 22245",
       "title": "CAPASITS",
       "description": "Atención a pacientes con VIH e infecciones de transmisión sexual.",
       "latitude": 32.4789,
@@ -127,7 +139,7 @@
         <div class="popup-content">
           <h3>${loc.title}</h3>
           <p>${loc.description}</p>
-          <p><strong>Address:</strong> ${loc.name}</p>
+          <p><strong>Direccion:</strong> ${loc.name}</p>
         </div>
       `;
 
